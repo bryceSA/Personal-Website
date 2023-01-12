@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar">
+        <div class="inner-width">
+            <a href="/" class="logo"></a>
+            <button class="menu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <a href="#">Home</a>
+                <a href="#">Home1</a>
+                <a href="#">Home2</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--home-->
+
+    <section id="home">
+        <div class="inner-width">
+            <div class="content">
+                <h1></h1>
+                <div class ="sm">
+                    <a href="https://www.linkedin.com/in/bryce-anderson-05967b1a8/" class="icons"></a>
+                    <a href="https://www.github.com" class="icons2"></a>
+                </div>
+                <div class="buttons">
+                    <a href="#">Contact me</a>
+                    <a href="#">Download Resume</a>
+                </div>
+                <h2></h2>
+            </div>
+        </div>
+       
+    </section>
+
+   
+    <div class="donuts" >
+        <donut style="background-color: rgb(255, 0, 0);">
+                <pre id="canvas" style="color: rgb(0, 51, 255), red; white-space: pre;"></pre>
+                <script src="/scripts/scripts.js"></script>
+            
+        </donut>
+
+    </div>
+    <h1>Bubble sort</h1>
+    <div id="inputs"></div>
+    <button onclick="sort()">Sort</button>
+    <div id="container"></div>
+    <script>
+        // Generate random array
+        let arr = [...Array(20)].map(() => Math.floor(Math.random() * 100));
+
+        // Display array as inputs
+        const inputs = document.getElementById("inputs");
+        for (let i = 0; i < arr.length; i++) {
+            const input = document.createElement("input");
+            input.value = arr[i];
+            inputs.appendChild(input);
+        }
+
+        // Display array as bars
+        const container = document.getElementById("container");
+        for (let i = 0; i < arr.length; i++) {
+            const bar = document.createElement("div");
+            bar.classList.add("bar");
+            bar.style.height = `${arr[i]}px`;
+            container.appendChild(bar);
+        }
+
+        // Sort function
+        function sort() {
+            // Update array from inputs
+            arr = [];
+            const inputs = document.getElementsByTagName("input");
+            for (let i = 0; i < inputs.length; i++) {
+                arr.push(parseInt(inputs[i].value));
+            }
+
+            // Perform bubble sort
+            let swapped = true;
+            while (swapped) {
+                swapped = false;
+                for (let i = 0; i < arr.length - 1; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        // Swap values in array
+                        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+
+                        // Update inputs
+                        inputs[i].value = arr[i];
+                        inputs[i + 1].value = arr[i + 1];
+
+                        // Update bars
+                        const bars = document.getElementsByClassName("bar");
+                        bars[i].style.height = `${arr[i]}px`;
+                        bars[i + 1].style.height = `${arr[i + 1]}px`;
+
+                        // Set swapped flag
+                        swapped = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+<div class="resume">
+    <h1>Bryce S. Anderson</h1>
+    <p>900 N Forest St. | 712C | Bellingham, WA 98225</p>
+    <p>Tel: (425) 999-5223 | Email: ander806@wwu.edu</p>
+  
+    <h2>Education</h2>
+    <ul>
+      <li>Computer Science Major at Western Washington University, September 2020 - Current</li>
+      <li>Completed and Current Classes:</li>
+      <ul>
+        <li>Data Structures and Algorithms with Lab</li>
+        <li>Computer Systems I with Lab</li>
+        <li>Formal Language and Functional Programming</li>
+        <li>Computer-Mediated Communications with Lab</li>
+        <li>Computer programming (I & II) with Lab</li>
+        <li>Elementary Linear Algebra</li>
+        <li>Calculus (I & II)</li>
+        <li>Physics with Calculus (I & II)</li>
+        <li>Intro to Microeconomics, and Macroeconomics</li>
+        <li>Law and the Business environment</li>
+        <li>Financial Accounting</li>
+      </ul>
+    </ul>
+  
+    <h2>Work Experience</h2>
+    <ul>
+      <li>Porsche of Bellingham, May 2022 - Current</li>
+      <ul>
+        <li>Lot Attendant</li>
+        <li>Responsible for delivering customer cars and ensuring a high-value experience at the dealership</li>
+        <li>Closing shift - securing the building and preparing it for the next day</li>
+      </ul>
+      <li>Limitless Marine, April 2021 - August 2021, April 2022 - August 2022</li>
+      <ul>
+        <li>Summer job in the boating and yacht industry</li>
+        <li>Communicate with high-end clients with specific needs and high standards</li>
+      </ul>
+      <li>United States Census Bureau, August 2020 - October 2020</li>
+      <ul>
+        <li>Enumerator, collecting survey data for the 2020 US Census</li>
+        <li>Communicated with diverse individuals and problem-solved when individuals were unwilling to provide information</li>
+        <li>Worked around language barriers</li>
+      </ul>
+      <li>DECA, September 2016 - June 2020</li>
+      <ul>
+        <li>Competed in marketing role play events for hospitality and sales services for four years</li>
+        <li>Placed 2nd in hospitality services at area competition in Bellevue 2020</li>
+        <li>Became the secretary for Cedarcrest DECA Junior year</li>
+      </ul>
+    </ul>
+  
+    <h2>Qualifications and Skills</h2>
+    <ul>
+      <li>Languages: 2+ years of Java, Python, CSS, 1 year of C, C++</li>
+      <li>Operating Systems: Linux, Windows, Android</li>
+      <li>Projects: Personal website, Sudoku solver, and other visual projects; lab projects at school (buffer overflow attacks, bit twiddling, bit bomb defusing, Sudoku generator)</li>
+      <li>Involvement: Member of the Whatcom Coders Club, hosting lectures, discussing new technology, and preparing for interviews</li>
+      <li>Communicator: Enjoy talking to people from diverse backgrounds and finding common ground</li>
+      <li>Computer Skills: 80 WPM, clean coding style</li>
+      <li>Job Skill Strengths: Problem-solving, work ethic, proactiveness, reliability, positivity</li>
+      </ul>
+    
+      <h2>References</h2>
+      <p>Available upon request.</p>
+    </div>
+    
+  
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore quae tenetur expedita adipisci perferendis amet tempora ea eveniet quibusdam, quos fuga, odit porro dolor, consequatur eius odio ut atque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam repellendus saepe officiis eligendi aut at repellat quas recusandae natus ad. Veritatis optio laboriosam ea placeat nam quod tempore sed soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor beatae voluptas tenetur non voluptate molestias cupiditate alias iure voluptatum odit placeat id quos aliquam, quisquam, eaque error, sint illum soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet laboriosam possimus qui provident similique doloremque aspernatur alias, corrupti est tenetur non quia nemo exercitationem voluptate maxime! Vel, amet natus!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore quae tenetur expedita adipisci perferendis amet tempora ea eveniet quibusdam, quos fuga, odit porro dolor, consequatur eius odio ut atque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam repellendus saepe officiis eligendi aut at repellat quas recusandae natus ad. Veritatis optio laboriosam ea placeat nam quod tempore sed soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor beatae voluptas tenetur non voluptate molestias cupiditate alias iure voluptatum odit placeat id quos aliquam, quisquam, eaque error, sint illum soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet laboriosam possimus qui provident similique doloremque aspernatur alias, corrupti est tenetur non quia nemo exercitationem voluptate maxime! Vel, amet natus!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore quae tenetur expedita adipisci perferendis amet tempora ea eveniet quibusdam, quos fuga, odit porro dolor, consequatur eius odio ut atque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam repellendus saepe officiis eligendi aut at repellat quas recusandae natus ad. Veritatis optio laboriosam ea placeat nam quod tempore sed soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor beatae voluptas tenetur non voluptate molestias cupiditate alias iure voluptatum odit placeat id quos aliquam, quisquam, eaque error, sint illum soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet laboriosam possimus qui provident similique doloremque aspernatur alias, corrupti est tenetur non quia nemo exercitationem voluptate maxime! Vel, amet natus!</p>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos inventore quae tenetur expedita adipisci perferendis amet tempora ea eveniet quibusdam, quos fuga, odit porro dolor, consequatur eius odio ut atque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam repellendus saepe officiis eligendi aut at repellat quas recusandae natus ad. Veritatis optio laboriosam ea placeat nam quod tempore sed soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor beatae voluptas tenetur non voluptate molestias cupiditate alias iure voluptatum odit placeat id quos aliquam, quisquam, eaque error, sint illum soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta amet laboriosam possimus qui provident similique doloremque aspernatur alias, corrupti est tenetur non quia nemo exercitationem voluptate maxime! Vel, amet natus!</p>
+</body>
+<html>
+

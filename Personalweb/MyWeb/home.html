@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="style.css">
+    <title>Bubble sort</title>
+    <style>
+        .bar {
+            display: inline-block;
+            width: 20px;
+            height: 50px;
+            margin-right: 2px;
+            background-color: red;
+			text-align: center;
+			float: right;
+        }
+        input {
+            width: 30px;
+			color: rgb(6, 1, 1);
+   			 font-size: 15px;
+    		font-weight: 500;
+   			 margin-left: 30px;
+    		transition: .2s linear;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bubble sort</h1>
+    <div id="inputs"></div>
+    <button onclick="sort()">Sort</button>
+    <div id="container"></div>
+    <script>
+        // Generate random array
+        let arr = [...Array(20)].map(() => Math.floor(Math.random() * 100));
+
+        // Display array as inputs
+        const inputs = document.getElementById("inputs");
+        for (let i = 0; i < arr.length; i++) {
+            const input = document.createElement("input");
+            input.value = arr[i];
+            inputs.appendChild(input);
+        }
+
+        // Display array as bars
+        const container = document.getElementById("container");
+        for (let i = 0; i < arr.length; i++) {
+            const bar = document.createElement("div");
+            bar.classList.add("bar");
+            bar.style.height = `${arr[i]}px`;
+            container.appendChild(bar);
+        }
+
+        // Sort function
+        function sort() {
+            // Update array from inputs
+            arr = [];
+            const inputs = document.getElementsByTagName("input");
+            for (let i = 0; i < inputs.length; i++) {
+                arr.push(parseInt(inputs[i].value));
+            }
+
+            // Perform bubble sort
+            let swapped = true;
+            while (swapped) {
+                swapped = false;
+                for (let i = 0; i < arr.length - 1; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        // Swap values in array
+                        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+
+                        // Update inputs
+                        inputs[i].value = arr[i];
+                        inputs[i + 1].value = arr[i + 1];
+
+                        // Update bars
+                        const bars = document.getElementsByClassName("bar");
+                        bars[i].style.height = `${arr[i]}px`;
+                        bars[i + 1].style.height = `${arr[i + 1]}px`;
+
+                        // Set swapped flag
+                        swapped = true;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
